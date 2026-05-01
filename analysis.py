@@ -66,3 +66,59 @@ plt.xlabel("Content Count")
 plt.ylabel("Country")
 
 plt.show()
+# GENRE ANALYSIS
+
+genres = df["listed_in"].str.split(", ").explode()
+
+top_genres = genres.value_counts().head(10)
+
+plt.figure(figsize=(12,6))
+
+sns.barplot(
+    x=top_genres.values,
+    y=top_genres.index
+)
+
+plt.title("Top Genres on Netflix")
+plt.xlabel("Count")
+plt.ylabel("Genre")
+
+plt.savefig("images/top_genres.png")
+
+plt.show()# COUNTRY FIX
+
+countries = df["country"].str.split(", ").explode()
+
+top_countries = countries.value_counts().head(10)
+
+plt.figure(figsize=(12,6))
+
+sns.barplot(
+    x=top_countries.values,
+    y=top_countries.index
+)
+
+plt.title("Top Countries on Netflix (Fixed)")
+plt.xlabel("Count")
+plt.ylabel("Country")
+
+plt.savefig("images/top_countries.png")
+
+plt.show()# MOVIE DURATION ANALYSIS
+
+movies = df[df["type"] == "Movie"].copy()
+
+movies["duration"] = movies["duration"].str.replace(" min", "")
+movies["duration"] = movies["duration"].astype(float)
+
+plt.figure(figsize=(10,5))
+
+sns.histplot(movies["duration"], bins=30)
+
+plt.title("Movie Duration Distribution")
+plt.xlabel("Minutes")
+plt.ylabel("Count")
+
+plt.savefig("images/movie_duration.png")
+
+plt.show()
