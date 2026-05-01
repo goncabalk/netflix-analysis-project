@@ -154,25 +154,39 @@ plt.ylabel("Rating")
 
 plt.savefig("images/ratings.png")
 plt.show()
-# HEATMAP: TOP COUNTRIES OVER YEARS
 
-countries = df["country"].str.split(", ").explode()
-df_exp = df.copy()
-df_exp["country"] = countries
+# COUNTRY HEATMAP
 
-top5 = countries.value_counts().head(5).index
+country_df = df[["country", "release_year"]].dropna().copy()
 
-heat = (
-    df_exp[df_exp["country"].isin(top5)]
+country_df["country"] = country_df["country"].str.split(", ")
+country_df = country_df.explode("country").reset_index(drop=True)
+country_df["country"] = country_df["country"].str.strip()
+
+top_countries = country_df["country"].value_counts().head(5).index.tolist()
+
+heatmap_data = (
+    country_df[country_df["country"].isin(top_countries)]
     .groupby(["country", "release_year"])
     .size()
-    .unstack(fill_value=0)
+    .reset_index(name="count")
+    .pivot_table(
+        index="country",
+        columns="release_year",
+        values="count",
+        aggfunc="sum",
+        fill_value=0
+    )
 )
 
-plt.figure(figsize=(12,6))
-sns.heatmap(heat, cmap="Blues")
+plt.figure(figsize=(14, 6))
+
+sns.heatmap(heatmap_data, cmap="Blues")
 
 plt.title("Top Countries Content Over Time")
+plt.xlabel("Release Year")
+plt.ylabel("Country")
 
-plt.savefig("images/country_heatmap.png")
+plt.savefig("images/country_heatmap.png", bbox_inches="tight")
 plt.show()
+
