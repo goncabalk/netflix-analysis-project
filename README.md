@@ -1,20 +1,20 @@
-# Netflix Content Analysis
+ Netflix Content Analysis
 
 This project explores Netflix's catalog using Python and data analysis techniques.
 
-##  Technologies Used
+ Technologies Used
 - Python
 - Pandas
 - Matplotlib
 - Seaborn
 
-##  Objectives
+ Objectives
 - Understand Netflix content distribution
 - Analyze trends over time
 - Explore top genres and countries
 - Examine movie duration patterns
 
-##  Key Insights
+ Key Insights
 
 - Movies dominate Netflix content compared to TV Shows
 - Content production increased significantly after 2015
@@ -23,33 +23,32 @@ This project explores Netflix's catalog using Python and data analysis technique
 - The United States, India, and the UK are top content producers
 - Most movies are between **80–120 minutes**
 
-##  Sample Visualizations
+ Sample Visualizations
 
-### Content Types
+Content Types
 ![Content Types](images/content_types.png)
-
-### Top Genres
+ Top Genres
 ![Genres](images/top_genres.png)
 
-### Top Countries
+Top Countries
 ![Countries](images/top_countries.png)
 
-### Movie Duration
+Movie Duration
 ![Duration](images/movie_duration.png)
-##  Methodology
+Methodology
 
 - Data cleaning (handling missing values)
 - Feature transformation (splitting multi-value columns)
 - Exploratory data analysis (EDA)
 - Visualization for insights
 
-##  Additional Visualizations
+Additional Visualizations
 
-### Yearly Trend
+Yearly Trend
 ![Year Trend](images/year_type_trend.png)
 
-### Ratings
+Ratings
 ![Ratings](images/ratings.png)
-## 🚀 Live Demo 
+Live Demo 
 
 [Open the Streamlit Dashboard](https://netflix-analysis-project-6jdgjo5dnvh4nvfshzcpzz.streamlit.app/)
