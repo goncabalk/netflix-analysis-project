@@ -36,3 +36,20 @@ This project explores Netflix's catalog using Python and data analysis technique
 
 ### Movie Duration
 ![Duration](images/movie_duration.png)
+## 📌 Methodology
+
+- Data cleaning (handling missing values)
+- Feature transformation (splitting multi-value columns)
+- Exploratory data analysis (EDA)
+- Visualization for insights
+
+## 📊 Additional Visualizations
+
+### Yearly Trend
+![Year Trend](images/year_type_trend.png)
+
+### Ratings
+![Ratings](images/ratings.png)
+
+### Country Heatmap
+![Heatmap](images/country_heatmap.png)

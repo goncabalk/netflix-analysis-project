@@ -1,3 +1,6 @@
+# NOTE:
+# - Missing country values dropped for country analysis
+# - 'listed_in' and 'country' fields exploded for accurate counts
 import pandas as pd
 import seaborn as sns
 import matplotlib.pyplot as plt
@@ -121,4 +124,55 @@ plt.ylabel("Count")
 
 plt.savefig("images/movie_duration.png")
 
+plt.show()
+# YEARLY TYPE TREND (Movie vs TV)
+
+year_type = (
+    df.groupby(["release_year", "type"])
+      .size()
+      .reset_index(name="count")
+)
+
+plt.figure(figsize=(12,6))
+sns.lineplot(data=year_type, x="release_year", y="count", hue="type")
+
+plt.title("Movies vs TV Shows by Year")
+plt.xlabel("Year")
+plt.ylabel("Count")
+
+plt.savefig("images/year_type_trend.png")
+plt.show()# RATING DISTRIBUTION
+
+rating_counts = df["rating"].value_counts().head(10)
+
+plt.figure(figsize=(10,5))
+sns.barplot(x=rating_counts.values, y=rating_counts.index)
+
+plt.title("Top Content Ratings")
+plt.xlabel("Count")
+plt.ylabel("Rating")
+
+plt.savefig("images/ratings.png")
+plt.show()
+# HEATMAP: TOP COUNTRIES OVER YEARS
+
+countries = df["country"].str.split(", ").explode()
+df_exp = df.copy()
+df_exp["country"] = countries
+
+top5 = countries.value_counts().head(5).index
+
+heat = (
+    df_exp[df_exp["country"].isin(top5)]
+    .groupby(["country", "release_year"])
+    .size()
+    .unstack(fill_value=0)
+)
+
+plt.figure(figsize=(12,6))
+sns.heatmap(heat, cmap="Blues")
+
+plt.title("Top Countries Content Over Time")
+
+plt.savefig("images/country_heatmap.png")
 plt.show()
