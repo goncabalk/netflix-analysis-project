@@ -50,5 +50,6 @@ This project explores Netflix's catalog using Python and data analysis technique
 
 ### Ratings
 ![Ratings](images/ratings.png)
-## 🚀 Live Demo
-👉 https://netflix-analysis-project-6jdgjo5dnvh4nvfshzcpzz.streamlit.app/
+## 🚀 Live Demo 
+
+[Open the Streamlit Dashboard](https://netflix-analysis-project-6jdgjo5dnvh4nvfshzcpzz.streamlit.app/)
