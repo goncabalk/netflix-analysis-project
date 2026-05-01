@@ -50,6 +50,5 @@ This project explores Netflix's catalog using Python and data analysis technique
 
 ### Ratings
 ![Ratings](images/ratings.png)
-
-### Country Heatmap
-![Heatmap](images/country_heatmap.png)
+## 🚀 Live Demo
+👉 https://YOUR-APP.streamlit.app
